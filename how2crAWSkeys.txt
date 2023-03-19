@@ -1,0 +1,31 @@
+STEP TO GET YOUR AWS CREDENTIAL
+
+Login to your AWS Console
+Search for IAM (Identity and Access Managmement)
+Click on Users (Left hand side)
+Click on Add Users Button (top right)
+User Details - Enter User Name (i.e, My-EC2-Credential)
+     DO NOT check the "Provide user access to the AWS Managment Console"
+Click Next
+Click on Attach Policies directly (On the Set Permissions step 2)
+   Search EC2FullAccess and Check.
+   Search S3FullAccess and Check.
+   Click Create User.
+Click on the User you just created
+Click on Security Credentials
+Scroll Down and click on Create Access Key Button.
+Select Command Line Interface (CLI) option.
+Check I understand ....
+Click on Next
+Enter "For use with Terraform and CLI" for Tag (optional)
+Click Create Access Key button
+Copy Access Key and Secret Access Key (or download the CSV file)
+Click Done.
+
+You should create a text file (i.e., aws.env) contains the following information.
+The file should be well protected (i.e, chmod 700 aws.env)
+AWS_SECRET_ACCESS_KEY=your-access-secrete
+AWS_ACCESS_KEY_ID=your-access-id
+AWS_DEFAULT_REGION=your-region (i.e., us-west-2, us-west-1)
+
+You may want to disable or delete this access key from the GUI and create a new one every month or so.
