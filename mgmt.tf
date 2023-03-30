@@ -1,7 +1,7 @@
 # Default Security Group of VPC
-resource "aws_security_group" "web" {
-  name        = "${var.environment}-web-sg"
-  description = "SG for WebServer"
+resource "aws_security_group" "mgmt" {
+  name        = "${var.environment}-mgmt-sg"
+  description = "SG for Managment Subnet"
   vpc_id      = aws_vpc.main.id
   depends_on = [
     aws_vpc.main
@@ -15,22 +15,6 @@ resource "aws_security_group" "web" {
     cidr_blocks = [var.stanford_cidr]
   }
 
-    ingress {
-    description = "Allow SSH between servers"
-    from_port = "22"
-    to_port   = "22"
-    protocol  = "tcp"
-    self      = true
-  }
-
-    ingress {
-    description = "Allow HTTPS to the world"
-    from_port = "443"
-    to_port   = "443"
-    protocol  = "tcp"
-    cidr_blocks = [var.world_cidr]
-  }
-
     egress {
     description = "Allow outbound HTTPS"
     from_port = "443"
@@ -41,6 +25,6 @@ resource "aws_security_group" "web" {
 
   tags = {
     Environment = "${var.environment}"
-    Name = var.web_tier_name
+    Name = var.mgmt_tier_name
   }
 }

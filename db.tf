@@ -57,5 +57,6 @@ resource "aws_security_group" "db" {
 
   tags = {
     Environment = "${var.environment}"
+    Name = var.db_tier_name
   }
 }

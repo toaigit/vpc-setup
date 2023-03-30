@@ -41,5 +41,6 @@ resource "aws_security_group" "apps" {
 
   tags = {
     Environment = "${var.environment}"
+    Name = var.app_tier_name
   }
 }
